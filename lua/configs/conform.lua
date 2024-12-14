@@ -3,16 +3,16 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
-    cpp = { "clang-format" },
     python = { "isort", "black" },
+    cpp = { "clang-format" },
     go = { "gci" },
   },
 
   format_on_save = {
-    -- These options will be passed to conform.format()
+    --   -- These options will be passed to conform.format()
     timeout_ms = 500,
     lsp_fallback = true,
   },
 }
 
-require("conform").setup(options)
+return options

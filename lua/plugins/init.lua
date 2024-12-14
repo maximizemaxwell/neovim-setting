@@ -2,16 +2,13 @@ return {
   {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
-    config = function()
-      require "configs.conform"
-    end,
+    opts = require "configs.conform",
   },
 
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
   },
@@ -23,35 +20,6 @@ return {
   },
 
   {
-    "wakatime/vim-wakatime",
-    lazy = false,
-    setup = function()
-      vim.cmd [[packadd wakatime/vim-wakatime]]
-    end,
-  },
-
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
-        "clangd",
-        "clang-format",
-        "pyright",
-        "gopls",
-        "asm-lsp",
-        "solang",
-        "solang-llvm",
-        "wakatime/vim-wakatime",
-      },
-    },
-  },
-
-  {
     "nvim-treesitter/nvim-treesitter",
     opts = {
       ensure_installed = {
@@ -60,13 +28,22 @@ return {
         "vimdoc",
         "html",
         "css",
-        "clangd",
-        "cpp",
         "python",
+        "cpp",
+        "c",
         "go",
-        "asm",
+        "rust",
         "solidity",
       },
     },
+  },
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    config = function()
+      require("render-markdown").setup {
+        -- Add your custom configurations here
+      }
+    end,
+    lazy = false, -- Load this plugin immediately
   },
 }
